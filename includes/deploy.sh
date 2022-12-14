@@ -21,7 +21,10 @@ first_deploy() {
 		# Setting up buster on the current folder.
 		buster setup --gh-repo="$remote_url"
 		buster generate --domain="$GHOST_SERVER_URL"
-
+		
+		# Remote static/.git, else commit will fail
+		rm -rf static/.git
+		
 		# Fixing Links
 		find static -name *.html -type f -exec sed -i '''s#http://localhost:2373#'$gh_username'.github.io/'$gh_repo'#g' {} \;
 
