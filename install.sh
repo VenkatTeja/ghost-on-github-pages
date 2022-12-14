@@ -33,7 +33,7 @@ local_setup() {
 		# Installing local version of Ghost
 		echo '[INFO] Trying to install Ghost using Ghost-CLI...'
 		echo '[INFO] Installing Ghost at' "$GHOST_PATH"
-		ghost install local --no-start --enable --port 2373
+		ghost install local --no-start --enable --port 2373 --ip 0.0.0.0
 	fi
 }
 
