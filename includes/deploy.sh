@@ -3,6 +3,9 @@
 HOME_PATH=$HOME
 GHOST_PATH="${HOME_PATH}/.ghost/current"
 GHOST_SERVER_URL="localhost:2373/"
+gh_username="VenkatTeja"
+remote_url="git@github.com:VenkatTeja/hashstack-docs-demo.git"
+gh_repo="hashstack-docs-demo"
 
 first_deploy() {
 	if [ -d "$GHOST_PATH" ]; then
@@ -15,10 +18,6 @@ first_deploy() {
 		echo "Example:"
 		echo "       git@github.com:YOUR_USERNAME/YOUR_REPOSITORY.git"
 		echo ''
-		read -p "Github username: "  gh_username
-		read -p "Remote URL: "  remote_url
-		read -p "Repo name: " gh_repo
-
 		# Setting up buster on the current folder.
 		buster setup --gh-repo="$remote_url"
 		buster generate --domain="$GHOST_SERVER_URL"
@@ -38,7 +37,7 @@ first_deploy() {
 
 		git add -A
 		git commit -m "First commit on Github Pages using Ghost."
-		git push origin master:master master:gh-pages -f
+		GIT_SSH_COMMAND='ssh -i ~/.ssh/id_ed25519_hashstack_docs' git push origin master:master master:gh-pages -f
 	fi
 }
 
@@ -51,16 +50,14 @@ update() {
 
 		echo ' -------------------- FIXING LINKS  -------------------- '
 		echo ''
-		read -p "Github username: "  gh_username
-		echo "Leave blank if repo name is username.github.io"
-		read -p "Repo name: " gh_repo
+		
 		# Fixing Links
 		find static -name *.html -type f -exec sed -i '''s#http://localhost:2373#'$gh_username'.github.io/'$gh_repo'#g' {} \;
 
 		# Commiting changes to repository in order to deploy new content.
 		git add -A
 		git commit -m "Update on the website at $(date)"
-		git push origin master:master master:gh-pages -f
+		GIT_SSH_COMMAND='ssh -i ~/.ssh/id_ed25519_hashstack_docs' git push origin master:master master:gh-pages -f
 	fi
 }
 		
