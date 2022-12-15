@@ -1,0 +1,24 @@
+{
+  "name": "ghost-on-github-pages",
+  "version": "1.0.0",
+  "description": "**We need contributions via Pull Requests in order to maintain this as a working solution. Please, if possible send your contribution!**",
+  "main": "updateRoles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VenkatTeja/ghost-on-github-pages.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VenkatTeja/ghost-on-github-pages/issues"
+  },
+  "homepage": "https://github.com/VenkatTeja/ghost-on-github-pages#readme",
+  "dependencies": {
+    "googleapis": "^109.0.1",
+    "nodemailer": "^6.8.0",
+    "sqlite3": "^5.1.4"
+  }
+}

@@ -33,7 +33,7 @@ local_setup() {
 		# Installing local version of Ghost
 		echo '[INFO] Trying to install Ghost using Ghost-CLI...'
 		echo '[INFO] Installing Ghost at' "$GHOST_PATH"
-		ghost install local --no-start --enable --port 2373 --ip 0.0.0.0
+		ghost install 5.25.4 --db=sqlite3 --ip=0.0.0.0 --dbpath ../.ghost/admin.db --auto
 	fi
 }
 
