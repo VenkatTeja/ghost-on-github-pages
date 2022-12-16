@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const sendMail = require('./gmail');
 
-const GHOST_DOMAIN = 'http://localhost:2371/ghost/#/signup/'
+const GHOST_DOMAIN = 'http://18.142.4.255:2368/ghost/#/signup/'
 
 const main = async () => {
 
