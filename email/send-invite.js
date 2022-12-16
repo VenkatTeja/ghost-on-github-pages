@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('../../.ghost3/admin.db');
+const db = new sqlite3.Database('../../.ghost/admin.db');
 const fs = require('fs');
 const path = require('path');
 const sendMail = require('./gmail');
