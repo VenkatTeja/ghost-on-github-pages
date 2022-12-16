@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('../../.ghost/admin.db');
+const db = new sqlite3.Database('../.ghost/admin.db');
 const fs = require('fs');
 const path = require('path');
 const sendMail = require('./gmail');
@@ -14,8 +14,8 @@ const main = async () => {
       console.log(row.id + ": " + row.email);
 
       console.log('sending invite to ', row.email)
-      const TO = 'venkatt@hashstack.finance'
-      const FROM = 'venkatt@hashstack.finance'
+      const TO = row.email
+      const FROM = 'venkat@hashstack.finance'
 
       const options = {
         to: TO,
@@ -32,10 +32,10 @@ const main = async () => {
 
       const messageId = await sendMail(options);
 
-      db.run(`UPDATE invites SET status='sent' where email='${row.email}'`);
 
       return messageId;
     });
+    // db.run(`UPDATE invites SET status='sent' where email='${row.email}'`);
   });
     
   db.close();
